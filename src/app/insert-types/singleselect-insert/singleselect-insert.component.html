@@ -1,0 +1,11 @@
+<mat-card-content>
+  <mat-radio-group class="radio-group">
+    <div *ngFor="let aItem of insertService.htlFields[i].answerList">
+      <mat-radio-button class="radio-button"
+                       [value]="aItem.answerID"
+                       (click)="handleSingleSelect(aItem)">
+        {{aItem.answerLabel}}
+      </mat-radio-button>
+    </div>
+  </mat-radio-group>
+</mat-card-content>

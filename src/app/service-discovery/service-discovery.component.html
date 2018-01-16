@@ -1,0 +1,22 @@
+<mat-sidenav #sidenav opened="true" align="end">
+  <h3 mat-header>Services</h3>
+  <mat-list>
+  <div *ngFor="let service of (qService.suitableHotel$ | async)">
+  <mat-list-item>
+    {{service.answerLabel}}
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  </div>
+  </mat-list>
+</mat-sidenav>
+
+
+
+<!--<mat-nav-list>
+  <h3 mat-header>Services</h3>
+  <mat-list-item *ngFor="let service of serviceData">
+    {{service.name}}
+  </mat-list-item>
+</mat-nav-list>
+
+-->

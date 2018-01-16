@@ -1,0 +1,25 @@
+<mat-card-content>
+
+      <mat-input-container>
+        <input matInput placeholder="Insert your value here" value="" [(ngModel)]="answerValue" required>
+      </mat-input-container>
+
+  <p>Please select the comparison<br>operation of your entered value.</p>
+  <p><mat-radio-group class="radio-group">
+    <div *ngFor="let cItem of qItem.comparisonOperationAnswers">
+      <mat-radio-button class="radio-button"
+                       [value]="cItem"
+                       (click)="handleOperationsSingleSelect(cItem.answerID)">
+        {{cItem.answerLabel}}
+      </mat-radio-button>
+    </div>
+  </mat-radio-group>
+  </p>
+
+</mat-card-content>
+<mat-card-actions>
+  <button *ngIf="qService.domainPhase == false && qService.QUESTIONNAIRE.currentQuestionIndex >= 1" mat-raised-button mat-button (click)="previousQuestion()">Back</button>
+  <button mat-raised-button mat-button (click)="nextQuestion()" [disabled]="answerValue==='' || answerValue==null || comparisonAnswerCode==='' || comparisonAnswerCode==null">Next</button>
+</mat-card-actions>
+
+

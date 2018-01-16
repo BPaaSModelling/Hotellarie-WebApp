@@ -1,0 +1,16 @@
+<mat-card-content>
+<mat-radio-group class="radio-group">
+  <div *ngFor="let aItem of qItem.answerList">
+  <mat-radio-button class="radio-button"
+                   [value]="aItem.answerID"
+                   (click)="handleSingleSelect(aItem)">
+    {{aItem.answerLabel}}
+  </mat-radio-button>
+  </div>
+</mat-radio-group>
+</mat-card-content>
+<mat-card-actions>
+  <button *ngIf="qService.domainPhase == false && qService.QUESTIONNAIRE.currentQuestionIndex >= 1" mat-raised-button mat-button (click)="previousQuestion()">Back</button>
+  <button mat-raised-button mat-button (click)="nextQuestion()" [disabled]="givenAnswer==='' || givenAnswer==null" >Next</button>
+</mat-card-actions>
+

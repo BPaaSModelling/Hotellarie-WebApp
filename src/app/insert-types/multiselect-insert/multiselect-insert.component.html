@@ -1,0 +1,7 @@
+<mat-card-content>
+  <div *ngFor="let aItem of insertService.htlFields[i].answerList">
+    <p>
+      <mat-checkbox (click)="handleMultiSelect(aItem.answerID, aItem.answerLabel)">{{aItem.answerLabel}}</mat-checkbox>
+    </p>
+  </div>
+</mat-card-content>

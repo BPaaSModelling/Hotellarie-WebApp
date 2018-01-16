@@ -1,0 +1,12 @@
+
+<mat-card-content>
+  <div *ngFor="let aItem of qItem.answerList">
+    <p>
+      <mat-checkbox (click)="handleMultiSelect(aItem)">{{aItem.answerLabel}}</mat-checkbox>
+    </p>
+  </div>
+</mat-card-content>
+<mat-card-actions>
+  <button *ngIf="qService.QUESTIONNAIRE.currentQuestionIndex >= 1" mat-raised-button mat-button (click)="previousQuestion()">Back</button>
+  <button mat-raised-button mat-button (click)="nextQuestion()" [disabled]="givenAnswer.length<=0" >Next</button>
+</mat-card-actions>

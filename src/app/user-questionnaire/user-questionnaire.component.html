@@ -1,0 +1,37 @@
+<mat-sidenav-container fullscreen>
+  <mat-toolbar color="default">
+    <button mat-raised-button (click)="startNewQuestionnaire()">Start New Questionnaire</button>
+    <span class="example-fill-remaining-space"></span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <div *ngIf="(!qService.QUESTIONNAIRE.completed); then thenBlock else elseBlock"></div>
+
+    <ng-template #thenBlock>
+        <service-discovery *ngIf="(!qService.setupPhase)"></service-discovery>
+        <div class="example-sidenav-content">
+        <questionnaire-item [qItem]="question"></questionnaire-item>
+        </div>
+    </ng-template>
+
+    <ng-template #elseBlock>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Questionnaire Completed</mat-card-title>
+          <mat-card-subtitle>Hotels based on the answered questions:</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <div *ngFor="let service of (qService.suitableHotel$ | async)">
+              <mat-list-item>
+                {{service.answerLabel}}
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </div>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+
+  </mat-sidenav-container>
+</mat-sidenav-container>

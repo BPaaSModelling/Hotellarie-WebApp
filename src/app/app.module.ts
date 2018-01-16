@@ -1,0 +1,78 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+import { JsonpModule } from '@angular/http';
+
+import {
+  MatToolbarModule, MatButtonModule, MatCardModule, MatSidenavModule,
+  MatInputModule, MatRadioModule, MatListModule, MatCheckboxModule
+} from '@angular/material';
+
+import { AppComponent } from './app.component';
+import { QuestionnaireService } from './questionnaire.service';
+import { ServiceDiscoveryComponent } from './service-discovery/service-discovery.component';
+import { QuestionnaireItemComponent } from './questionnaire-item/questionnaire-item.component';
+import { SearchQuestionComponent } from './types/search-question/search-question.component';
+import { SingleselectionQuestionComponent } from './types/singleselection-question/singleselection-question.component';
+import { ValueinsertQuestionComponent } from './types/valueinsert-question/valueinsert-question.component';
+import { MultiselectQuestionComponent } from './types/multiselect-question/multiselect-question.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AdminInsertHotelComponent} from './admin-insert-hotel/admin-insert-hotel.component';
+import { UserQuestionnaireComponent } from './user-questionnaire/user-questionnaire.component';
+import {InsertHTLService} from './admin-insert-hotel.service';
+import { SearchInsertComponent } from './insert-types/search-insert/search-insert.component';
+import { MultiselectInsertComponent } from './insert-types/multiselect-insert/multiselect-insert.component';
+import { SingleselectInsertComponent } from './insert-types/singleselect-insert/singleselect-insert.component';
+import { ValueInsertComponent } from './insert-types/value-insert/value-insert.component';
+
+const appRoutes: Routes = [
+  //{ path: '', component: HomeComponent },
+  //{ path: '**', redirectTo: '' },
+  { path: 'admin/insert', component: AdminInsertHotelComponent},
+  { path: 'question/:id', component: QuestionnaireItemComponent },
+  { path: 'user/questionnaire', component: UserQuestionnaireComponent },
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ServiceDiscoveryComponent,
+    SearchQuestionComponent,
+    SingleselectionQuestionComponent,
+    ValueinsertQuestionComponent,
+    MultiselectQuestionComponent,
+    AdminInsertHotelComponent,
+    UserQuestionnaireComponent,
+    SearchInsertComponent,
+    MultiselectInsertComponent,
+    SingleselectInsertComponent,
+    ValueInsertComponent,
+      QuestionnaireItemComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatRadioModule,
+    MatListModule,
+    MatCheckboxModule,
+    JsonpModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    QuestionnaireService,
+    InsertHTLService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [],
+})
+export class AppModule { }
