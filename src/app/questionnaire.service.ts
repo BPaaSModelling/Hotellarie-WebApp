@@ -135,7 +135,7 @@ export class QuestionnaireService {
         console.log(this.QUESTIONNAIRE.currentQuestionIndex);
 
 
-        if (this.QUESTIONNAIRE.completedQuestionList.length == 3 && !this.domainPhase){
+        if (this.QUESTIONNAIRE.completedQuestionList.length == 1 && !this.domainPhase){
             console.log("Ask for the domain question");
             //this.QUESTIONNAIRE.selectedDomainList = this.initialDomains;
             this.domainPhase = true;
