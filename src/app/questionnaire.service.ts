@@ -37,7 +37,7 @@ export class QuestionnaireService {
       this.question_of_domains.answerList = this.initialDomains;
       this.question_of_domains.answerType = "http://ikm-group.ch/archiMEO/questionnaire#MultiSelection";
       this.question_of_domains.domainLabel = "Introduction";
-      this.question_of_domains.questionID = 3.5;
+      this.question_of_domains.questionID = 1.5;
       let skippedAnswers: AnswerModel[] = [];
       let skippedAnswer: AnswerModel = new AnswerModel;
       skippedAnswer.answerLabel="SKIP";
@@ -185,23 +185,23 @@ export class QuestionnaireService {
 
     public showPreviousQuestion(): void {
 
-        if (this.QUESTIONNAIRE.currentQuestionIndex == 2 && this.domainPhase){
+        if (this.QUESTIONNAIRE.currentQuestionIndex == 0 && this.domainPhase){
 
             this.domainPhase = false;
             this.questionBehaviour.next(this.QUESTIONNAIRE.completedQuestionList[this.QUESTIONNAIRE.currentQuestionIndex]);
             this.QUESTIONNAIRE.selectedDomainList = [];
-        } else if (this.QUESTIONNAIRE.currentQuestionIndex == 3 && !this.domainPhase) {
+        } else if (this.QUESTIONNAIRE.currentQuestionIndex == 1 && !this.domainPhase) {
             this.domainPhase = true;
             this.questionBehaviour.next(this.question_of_domains);
             this.QUESTIONNAIRE.currentQuestionIndex--;
             this.QUESTIONNAIRE.completedQuestionList.splice(this.QUESTIONNAIRE.currentQuestionIndex+1,1);
             this.QUESTIONNAIRE.completedQuestionList[this.QUESTIONNAIRE.currentQuestionIndex].givenAnswerList.splice(1,1);
         }else{
-        this.QUESTIONNAIRE.currentQuestionIndex--;
-        this.questionBehaviour.next(this.QUESTIONNAIRE.completedQuestionList[this.QUESTIONNAIRE.currentQuestionIndex]);
-        this.QUESTIONNAIRE.completedQuestionList.splice(this.QUESTIONNAIRE.currentQuestionIndex+1,1);
-        this.QUESTIONNAIRE.completedQuestionList[this.QUESTIONNAIRE.currentQuestionIndex].givenAnswerList.splice(1,1);
-        console.log(this.QUESTIONNAIRE);
+            this.QUESTIONNAIRE.currentQuestionIndex--;
+            this.questionBehaviour.next(this.QUESTIONNAIRE.completedQuestionList[this.QUESTIONNAIRE.currentQuestionIndex]);
+            this.QUESTIONNAIRE.completedQuestionList.splice(this.QUESTIONNAIRE.currentQuestionIndex+1,1);
+            this.QUESTIONNAIRE.completedQuestionList[this.QUESTIONNAIRE.currentQuestionIndex].givenAnswerList.splice(1,1);
+            console.log(this.QUESTIONNAIRE);
         }
     }
 }
